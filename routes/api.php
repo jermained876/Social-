@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::resource("/book","Question1Controller");
 Route::resource("/question","QuestionController");
+Route::resource("/category","CategoryController");
