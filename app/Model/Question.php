@@ -9,12 +9,24 @@ use App\Model\Category;
 
 class Question extends Model
 {
+  protected $guarded=[];
 
+  public function getRouteKeyName()
+  {
+    return 'slug';
+  }
+//  protected $with =['user'];
 
     public function user ()
     {
       return $this->belongsTo(User::class);
     }
+
+
+public function getPathAttribute()
+{
+  return asset("api/question/$this->slug");
+}
 
     public function reply()
   {
