@@ -8,6 +8,11 @@ use App\Model\Question;
 use App\Http\Resources\ReplyResource;
 class ReplyController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('JWT', ['except' => ['index','show']]);
+  }
     /**
      * Display a listing of the resource.
      *
