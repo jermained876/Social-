@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Reply;
 use Illuminate\Http\Request;
-
+use App\Model\Question;
+use App\Http\Resources\ReplyResource;
 class ReplyController extends Controller
 {
     /**
@@ -12,9 +13,9 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Question $question)
     {
-        //
+        return ReplyResource::collection($question->reply);
     }
 
     /**
@@ -33,9 +34,9 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Question $question,Request $request)
     {
-        //
+        $question->reply()->create($reply->all());
     }
 
     /**
@@ -44,9 +45,9 @@ class ReplyController extends Controller
      * @param  \App\Model\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function show(Reply $reply)
+    public function show(Question $question,Reply $reply)
     {
-        //
+        return new ReplyResource($reply);
     }
 
     /**
@@ -67,9 +68,9 @@ class ReplyController extends Controller
      * @param  \App\Model\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reply $reply)
+    public function update(Question $question,Request $request, Reply $reply)
     {
-        //
+        $reply->update($request->all());
     }
 
     /**
@@ -80,6 +81,6 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        //
+        $reply->delete();
     }
 }
