@@ -22,12 +22,17 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 import AppHome from "./AppHome.vue"
 let axios = require('axios');
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import router from "./Router/Router.js"
+import User from "./Helper/User"
+
+window.User= User
 
 const app = new Vue({
     components:{AppHome},
@@ -35,5 +40,6 @@ const app = new Vue({
     mounted(){
         console.log('testinging');
     },
-    router
+    router,
+    User
 });

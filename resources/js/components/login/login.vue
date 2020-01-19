@@ -30,12 +30,13 @@
 export default {
   data(){
     return{
-      form:{email:"",password:""}
+      form:{email:"cruickshank.frank@example.com",password:"password"}
     }
   },
   methods:{
     login(){
-      axios.post('/api/auth/login',this.form).then((response)=>console.log(response.data)).catch((response)=>console.log(response));
+      
+    User.login(this.form);
     }
   }
 
