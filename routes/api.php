@@ -36,8 +36,9 @@ Route::group([
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
+    Route::post('signup','AuthController@signUp');
     Route::post('me', 'AuthController@me');
 
 });
 
-Route::post('/signup','AuthController@signUp');
+

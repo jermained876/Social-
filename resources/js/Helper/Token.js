@@ -7,7 +7,8 @@ class Token{
 
         if(payload)
         {
-            return payload.iss=="http://blog1.test/api/auth/login"? true : false;
+            console.log(payload);
+            return payload.iss=="http://blog1.test/api/auth/login" || "http://blog1.test/api/auth/signup"? true : false;
             //console.log('test');
         }
         else false

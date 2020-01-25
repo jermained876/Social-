@@ -10,7 +10,10 @@
   <form @submit.prevent="login()">
   <input type="email" name="" id="" class="form-control mt-2" placeholder="Email Address" v-model="form.email">   
 <input type="password" name="" id="" class="form-control mt-2" placeholder="Password" v-model="form.password"> 
-<input type="submit" class="btn btn-block btn-success mt-2" >
+<button type="submit" class="btn btn-success mt-3">Login</button>
+ <router-link to="/signup">
+  <button class="btn btn-primary mt-3">Signup</button>
+  </router-link>
   
 </form>
 
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import User from "../../Helper/User"
 export default {
   data(){
     return{
@@ -36,10 +40,17 @@ export default {
   methods:{
     login(){
       
-    User.login(this.form);
+    User.login(this.form)
+    
+    this.$router.push({name:'forum'})
     }
+  },
+created(){
+  if(User.loggedIn())
+  {
+    this.$router.push({name:'forum'})
   }
-
+}
 }
 </script>
 

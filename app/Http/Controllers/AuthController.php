@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignupRequest;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -34,7 +35,7 @@ class AuthController extends Controller
   }
 
 
-  public function signUp(Request $request)
+  public function signUp(SignupRequest $request)
   {
     User::create($request->all());
     return $this->login($request);

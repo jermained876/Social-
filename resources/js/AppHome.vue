@@ -11,21 +11,19 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample02">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          
+
+            <li class="nav-item active" v-for='item in items'>
+             <a class="nav-link" href="" v-show="item.show"><router-link :to="item.to">{{item.title}}</router-link></a>
             
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-              <li class="nav-item active">
-             <a class="nav-link" href=""><router-link to="/login1">Login</router-link></a>
-            
-          </li>
+
+          
         </ul>
         
       </div>
     </nav>
-
+{{items}}
 
        <h1>Home</h1>
        <router-view></router-view>
@@ -40,10 +38,30 @@
 
 <script>
 import Login from "./components/login/login.vue"
+import User from "./Helper/User"
     export default {
         components:{Login},
+        data(){
+          return {
+            items:[
+              {title:'Forum',to:"/forum",show:true},
+              {title:'Ask Question',to:"/ask",show:User.loggedIn()},
+              {title:'Categories',to:"/category",show:User.loggedIn()},
+              
+              {title:'login',to:"/login1",show:!User.loggedIn()},
+              {title:'logOutq',to:"/logout",show:User.loggedIn()}
+            ]
+          }
+        },
         mounted() {
             console.log('Component mounted.')
+            console.log(User.loggedIn())
+            
+        },
+        created(){
+            EventBus.$on('logout',()=>{
+              User.loggedOut()
+            });
         }
     }
 </script>

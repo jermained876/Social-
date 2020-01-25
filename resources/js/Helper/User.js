@@ -13,13 +13,16 @@ class User {
                         console.log(res);
                         console.log(res.user);
                        
+                        console.log(Token.isVaild(res.access_token));
                        
                        if(Token.isVaild(res.access_token))
                        {
                            AppStorage.store(res.access_token,res.user)
+                           window.location ='/forum'
+                           //console.log('here    ')
                        }
                        else{
-                           console.log('false');
+                           console.log('falsewww');
                        }
                        
                       
@@ -27,9 +30,11 @@ class User {
 
                     hasToken()
                     {
-                        const storeToken = AppStorage.getToken();
+                        const storeToken = AppStorage.getToken()
+                        console.log(AppStorage.getToken())
                         if(storeToken)
                         {
+                            console.log('test 10')
                             return Token.isVaild(storeToken)? true:false;
                         }
                         else return false;
@@ -37,12 +42,16 @@ class User {
 
                     loggedIn()
                     {
+                        //console.log('test 10')
                         return this.hasToken()
+                        
                     }
 
                     loggedOut()
                     {
-                        AppStorage.clear();
+                        console.log('out')
+                        AppStorage.clear()
+                        window.location='/forum'
                     }
                     name()
                     {
