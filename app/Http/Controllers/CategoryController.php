@@ -46,6 +46,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name,'-');
         $category->save();
+        return new CategoryResource($category);
 
     }
 
@@ -84,6 +85,8 @@ class CategoryController extends Controller
           "name"=>$request->name,
           "slug"=>Str::slug($request->name,'-'),
         ]);
+
+        return new CategoryResource($category);
     }
 
     /**

@@ -46,7 +46,7 @@ import User from "./Helper/User"
             items:[
               {title:'Forum',to:"/forum",show:true},
               {title:'Ask Question',to:"/ask",show:User.loggedIn()},
-              {title:'Categories',to:"/category",show:User.loggedIn()},
+              {title:'Categories',to:"/category",show:User.admin()},
               
               {title:'login',to:"/login1",show:!User.loggedIn()},
               {title:'logOutq',to:"/logout",show:User.loggedIn()}

@@ -83,6 +83,10 @@ class User {
                         console.log(this.id())
                        return this.id()==id;
                     }
+                    admin()
+                    {
+                        return this.id==1
+                    }
 
                     
 

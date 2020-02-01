@@ -8,7 +8,11 @@
 <question v-for="question in questions" :key="question.path" :data="question"></question>
 
 </div>
-<div class="col-md-4"><h3>Sidebar</h3></div>
+<div class="col-md-4"><h3>Sidebar</h3>
+
+<fcategory></fcategory>
+</div>
+
 
 
 
@@ -21,8 +25,9 @@
 
 <script>
 import question from './question'
+import fcategory from './forumCategory.vue'
 export default {
-    components:{question}, 
+    components:{question,fcategory}, 
     data(){
    return{
        questions:{}
