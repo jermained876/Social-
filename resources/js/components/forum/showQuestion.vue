@@ -7,7 +7,7 @@
     <p>{{data.body}}</p>
     <p class="card-title">{{data.user}}</p>
     <p class="card-text">{{data.created_at}}</p>
-    <div  v-show="data.owner" >
+    <div  v-show="owner" >
 
 <div @click="edit()"> <ion-icon name="create"></ion-icon></div>
 <div @click="del()"><ion-icon  name="trash"></ion-icon></div>
@@ -41,8 +41,17 @@ edit(){
 }
 
 },
+watch:{
+data(){
+  this.owner = User.owner(this.data.created_id);
+}
+},
 created(){
-  
+  //console.log(User.owner(this.data.created_id));
+  //console.log(data)
+  },
+  mounted(){
+    //console.log(this.data)
   }
 }
 </script>

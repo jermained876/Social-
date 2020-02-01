@@ -2406,7 +2406,16 @@ __webpack_require__.r(__webpack_exports__);
       EventBus.$emit('editQuestion');
     }
   },
-  created: function created() {}
+  watch: {
+    data: function data() {
+      this.owner = _Helper_User__WEBPACK_IMPORTED_MODULE_0__["default"].owner(this.data.created_id);
+    }
+  },
+  created: function created() {//console.log(User.owner(this.data.created_id));
+    //console.log(data)
+  },
+  mounted: function mounted() {//console.log(this.data)
+  }
 });
 
 /***/ }),
@@ -56363,8 +56372,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.data.owner,
-              expression: "data.owner"
+              value: _vm.owner,
+              expression: "owner"
             }
           ]
         },
@@ -72012,14 +72021,23 @@ function () {
   }, {
     key: "payload",
     value: function payload(token) {
+      // console.log('pass1');
       var payload = token.split('.')[1]; //console.log(token);
-      //console.log(this.decode(payload));
+      //  console.log(this.decode(payload));
+      //console.log('hehr');
+      //  console.log('pass2');
+      // console.log(this.decode(payload));
+      //console.log('pass 5');
 
       return this.decode(payload);
     }
   }, {
     key: "decode",
     value: function decode(payload) {
+      // console.log(payload+"pass4");
+      // console.log(atob(payload)+'pass 5');
+      // console.log(JSON.parse(atob(payload)));
+      //console.log('pass 6');
       return JSON.parse(atob(payload));
     }
   }]);
@@ -72118,16 +72136,24 @@ function () {
     key: "id",
     value: function id() {
       if (this.loggedIn) {
-        var playload = _Token__WEBPACK_IMPORTED_MODULE_0__["default"].playload(_AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken());
-        return playload.sub;
+        //console.log('herher');
+        //console.log(Token.payload(AppStorage.getToken()).sub);
+        //console.log('pass 7');
+        //var payload =Token.payload(AppStorage.getToken());
+        /// var playload1 = Token.payload(AppStorage.getToken());
+        //console.log(payload);
+        // console.log('pass 8');
+        // console.log(payload1.sub);
+        // console.log('pass 9');
+        return _Token__WEBPACK_IMPORTED_MODULE_0__["default"].payload(_AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken()).sub;
       }
     }
   }, {
     key: "owner",
     value: function owner(id) {
-      console.log('ssk');
-      console.log(id);
-      return id;
+      console.log(id + ' id');
+      console.log(this.id());
+      return this.id() == id;
     }
   }]);
 

@@ -65,16 +65,23 @@ class User {
                     {
                         if(this.loggedIn)
                         {
-                            const playload = Token.playload(AppStorage.getToken());
-                            return playload.sub;
+                            //console.log('herher');
+                            //console.log(Token.payload(AppStorage.getToken()).sub);
+                            //console.log('pass 7');
+                            //var payload =Token.payload(AppStorage.getToken());
+                           /// var playload1 = Token.payload(AppStorage.getToken());
+                            //console.log(payload);
+                           // console.log('pass 8');
+                         // console.log(payload1.sub);
+                           // console.log('pass 9');
+                            return Token.payload(AppStorage.getToken()).sub;
                         }
                     }
 
                     owner(id)
-                    {   
-                        console.log('ssk');
-                        console.log(id);
-                        return id;
+                    {   console.log(id+ ' id');
+                        console.log(this.id())
+                       return this.id()==id;
                     }
 
                     
