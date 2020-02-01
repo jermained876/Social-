@@ -25,6 +25,12 @@ let axios = require('axios');
 
 
 
+import Vue from 'vue'
+import VueSimplemde from 'vue-simplemde'
+import 'simplemde/dist/simplemde.min.css'
+
+Vue.component('vue-simplemde', VueSimplemde)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

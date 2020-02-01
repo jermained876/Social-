@@ -23,9 +23,9 @@
         
       </div>
     </nav>
-{{items}}
 
-       <h1>Home</h1>
+
+       
        <router-view></router-view>
        
 

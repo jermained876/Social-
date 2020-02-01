@@ -70,6 +70,13 @@ class User {
                         }
                     }
 
+                    owner(id)
+                    {   
+                        console.log('ssk');
+                        console.log(id);
+                        return id;
+                    }
+
                     
 
                   
