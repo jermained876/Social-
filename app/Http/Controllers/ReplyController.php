@@ -41,7 +41,10 @@ class ReplyController extends Controller
      */
     public function store(Question $question,Request $request)
     {
-        $question->reply()->create($reply->all());
+        $request['user_id']= auth()->user()->id;
+       $reply = $question->replies()->create($request->all());
+
+        return new ReplyResource($reply);
     }
 
     /**
@@ -75,7 +78,16 @@ class ReplyController extends Controller
      */
     public function update(Question $question,Request $request, Reply $reply)
     {
-        $reply->update($request->all());
+
+      //  $newreply = $reply->update($request->all());
+
+        //return new ReplyResource($newreply);
+
+        $reply->body = $request->body;
+
+       return $reply->update();
+
+        //return $reply;
     }
 
     /**
@@ -84,7 +96,7 @@ class ReplyController extends Controller
      * @param  \App\Model\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reply $reply)
+    public function destroy(Question $question,Reply $reply)
     {
         $reply->delete();
     }

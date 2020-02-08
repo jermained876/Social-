@@ -1,7 +1,6 @@
 <template>
   <div class="card mt-5">
-    {{data}}
-    {{owner}}
+   
   <h5 class="card-header">{{data.title}}</h5>
   <div class="card-body">
     <p>{{data.body}}</p>
@@ -9,8 +8,8 @@
     <p class="card-text">{{data.created_at}}</p>
     <div  v-show="owner" >
 
-<div @click="edit()"> <ion-icon name="create"></ion-icon></div>
-<div @click="del()"><ion-icon  name="trash"></ion-icon></div>
+<div class="float-left" @click="edit()"> <ion-icon size="large"  name="create"></ion-icon></div>
+<div class="float-right" @click="del()"><ion-icon size="large" name="trash"></ion-icon></div>
 
     </div>
     

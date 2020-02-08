@@ -27,7 +27,7 @@ class Question extends Model
   {
     return 'slug';
   }
-//  protected $with =['user'];
+  protected $with =['replies'];
 
     public function user ()
     {
@@ -40,9 +40,9 @@ public function getPathAttribute()
   return "/question/$this->slug";
 }
 
-    public function reply()
+    public function replies()
   {
-    return $this->hasMany(Reply::class);
+    return $this->hasMany(Reply::class)->latest();
   }
   public function category()
   {

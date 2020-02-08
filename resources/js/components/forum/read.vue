@@ -3,6 +3,8 @@
 <edit-question v-if="editing" :data='question'></edit-question>
 <show-question v-else :data='question'></show-question>
 
+<show-replies :replies="question.replies" :qslug="question.slug"></show-replies>
+
 </div>
 
 
@@ -12,9 +14,10 @@
 <script>
 import ShowQuestion from './showQuestion.vue'
 import EditQuestion from './editQuestion.vue'
+import ShowReplies from '../reply/replies'
 
 export default {
-    components:{ShowQuestion,EditQuestion},
+    components:{ShowQuestion,EditQuestion,ShowReplies},
     data(){
 return{
     question:{},

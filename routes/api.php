@@ -22,6 +22,12 @@ Route::resource("/question","QuestionController");
 Route::resource("/category","CategoryController");
 Route::resource('/question/{question}/reply',"ReplyController");
 
+
+Route::delete('/reply/{reply}', 'ReplyController@destory');
+
+
+
+
 Route::post('/like/{reply}','LikeController@likeIt');
 Route::delete('/like/{reply}','LikeController@unLikeIt');
 

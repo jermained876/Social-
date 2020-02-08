@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-  protected $guarded =[];
+ // protected $guarded =[];
+  
+protected $fillable =['body'];
+
+protected $with =['like'];
+
     public function question()
     {
       return $this->belongsTo(Question::class);
